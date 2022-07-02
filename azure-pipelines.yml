@@ -5,6 +5,7 @@ trigger:
       - main
 pool:
   name: TERRAFORM_MASTER
+  vmImage: "terraformAgent"
 steps:
 - task: Bash@3
   inputs:
