@@ -1,0 +1,7 @@
+trigger:
+  batch: true
+  branches:
+    include:
+      - main
+pool:
+  name: TERRAFORM_MASTER
