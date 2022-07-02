@@ -11,4 +11,19 @@ steps:
     targetType: 'inline'
     script: |
       echo 'building a new cloud'
+- task: CopyFiles@2
+  inputs:
+      SourceFolder: "$(Build.SourcesDirectory)"
+      Contents: "**/**"
+      TargetFolder: "$(build.artifactstagingdirectory)"
+  displayName: "prepare artifacts"
+ 
+- task: UniversalPackages@0
+  inputs:
+      command: "publish"
+      publishDirectory: "$(Build.ArtifactStagingDirectory)"
+      feedsToUsePublish: "internal"
+      vstsFeedPublish: "c6cf34b0-2e66-46e0-b9aa-c7577ad2de5f/9eb49bda-71fe-41a0-bde6-758a83b3f8f4"
+      vstsFeedPackagePublish: "TF$(Build.BuildId)"
+      versionOption: "patch"
 
