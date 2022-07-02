@@ -1,0 +1,38 @@
+.env
+.secret
+secret*
+terraform.tfvars
+production.tfvars
+staging.tfvars
+.tfvars
+#direnv files
+.envrc
+variables.tf
+bin/
+
+terraform-provider-azure-devops
+terraform.log
+crash.log
+
+#  Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# .tfvars files
+*.tfvars
+
+# ignore tf files in the root directory
+# ./*.tf
+
+# unwanted binary file
+**/debug.test
+dist
+
+
+#GoLand Editor configuration
+.idea
+
+.DS_Store

@@ -1,0 +1,26 @@
+0. ansible readme file
+1. db connection to nic- rebuild
+2. refractor vm into modules - a must -V
+3
+4. nsg review [!]
+5. convert parts into modules - (coach)
+6. password maintnance with blob
+7. blob access strengh
+8. if statement for workspace change
+
+backend subnet needs to be connected to nic -V ?
+
+nic needs to be connected to db
+
+------_---_
+
+# SUBMISSION
+
+## review keypoints in older projects-
+
+making everythihng work is just one parameter.
+(function, security, reeboot)
+
+password review
+
+readme files for modules, projects
