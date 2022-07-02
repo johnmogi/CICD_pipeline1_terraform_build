@@ -16,10 +16,7 @@ another issue in this regard is a bug in the state "│ Error: compute.Availabil
 this error that is thrown gets ignored on the second apply but it does block a fully ci cd pipeline.
 skipping ahead let's look at stage 2- ci from ansible pipeline into staging and (3) cd into production delivery.
 
-
-
-so i have to skip the bonus this time, although i have 
-
+so i have to skip the bonus this time, although i have
 
 this environment will deploy 2 VM based on east us b1s, unless specified differently on staging.tfvars
 
@@ -231,4 +228,5 @@ No requirements.
 | ----------------------------------------------------------------------------- | ----------- |
 | <a name="output_admin_password"></a> [admin_password](#output_admin_password) | n/a         |
 | <a name="output_app_public_ip"></a> [app_public_ip](#output_app_public_ip)    | n/a         |
+
 # CICD_pipeline1_terraform_build
