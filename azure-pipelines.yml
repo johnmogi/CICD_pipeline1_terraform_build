@@ -5,3 +5,10 @@ trigger:
       - main
 pool:
   name: TERRAFORM_MASTER
+steps:
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo 'building a new cloud'
+
