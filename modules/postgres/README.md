@@ -1,3 +1,12 @@
+# The Back end module
+## this module is being pulled from 'postgres.tf' file
+
+the following postgres module is a managed postgreSql server that holds one database.<br/>
+this database will be provided during the application deployment stage.<br/>
+a table will be connected inside named: 'measurements' into wich the application data will be stored.
+
+
+
 ## Requirements
 
 No requirements.

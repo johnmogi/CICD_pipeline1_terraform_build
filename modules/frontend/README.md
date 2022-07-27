@@ -1,7 +1,12 @@
-# this module uses a call from 5_vms.tf file
+# The Front end module
 
-the following variables needs to be transfered via
-"variables.tfvar" file (not included):
+## this module is being pulled from 'vms.tf' file
+
+this module creates virtual machines as part of the application.<br/>
+you can create as many and choose the size in the tfvar files.<br/>
+for example the tfvar file can send the size of "Standard_B1s"<br/>
+for a full list of 'B' azure machine sizes:<br/>
+https://docs.microsoft.com/en-us/azure/virtual-machines/sizes-b-series-burstable
 
 ## Requirements
 
