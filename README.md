@@ -6,6 +6,22 @@ a match made in heaven.
 
 ![Terraform](https://bootcamp.rhinops.io/images/terraform-logo.png)
 
+## How to use this repository:
+-you'll obviously need an active Azure cloud subscription.
+- you can use the providers.tf file - populate it with your own access:
++ retrieve your active subscription id,
++ retrieve your active subscription name and other data:
++ https://go.microsoft.com/fwlink/?LinkID=312990
+
+[!!!] important - do not include your secrets in your providers file if you upload it to github or other public repository, if you do please be advised of the use of enviroments secrets:
+<h4>Terraform and Azure Pipelines - Avoid these Beginner's Mistakes!</h4>
+https://www.youtube.com/watch?v=UaehcmoMAFc
+
+- the next important step is to create and connect a backend file.
+the backend file will serve as a back up point for both access and code sharing:
+https://docs.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage?tabs=azure-cli
+
+
 
 execution plan:
 spin a vm, connect it as an agent. (sysadmin)
@@ -18,14 +34,10 @@ the actual deployment, with the infracost report before execution.
 let's say for the sake of this excercise that the 1st ci is an independant that can chain up the whole process, manually into the repo or all the way.
 this means that to be truly independant it needs to run on it's seperate agent, to simplify things in a time budget situation- this will have to be manually done.
 
-another issue in this regard is a bug in the state "│ Error: compute.AvailabilitySetsClient#CreateOrUpdate: Failure responding to request: StatusCode=404 -- Original Error: autorest/azure: Service returned an error. Status=404 Code="ResourceGroupNotFound" Message="Resource group 'staging-weight-app' could not be found."
+## Toubleshooter:
+description - the machines 
+a bug in the state "│ Error: compute.AvailabilitySetsClient#CreateOrUpdate: Failure responding to request: StatusCode=404 -- Original Error: autorest/azure: Service returned an error. Status=404 Code="ResourceGroupNotFound" Message="Resource group 'staging-weight-app' could not be found."
 
-this error that is thrown gets ignored on the second apply but it does block a fully ci cd pipeline.
-skipping ahead let's look at stage 2- ci from ansible pipeline into staging and (3) cd into production delivery.
-
-so i have to skip the bonus this time, although i have
-
-this environment will deploy 2 VM based on east us b1s, unless specified differently on staging.tfvars
 
 tf apply error:
 https://github.com/hashicorp/terraform/issues/12826
