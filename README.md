@@ -91,6 +91,12 @@ terraform plan \
 
 you can also change plan to apply and or add -auto-approve for faster and skipped validation prompt.
 
+# additional modules:
+this Project also contains modular 'modules', you can check them out here:
+https://github.com/johnmogi/CICD_pipeline1_terraform_build/tree/main/modules/frontend
+https://github.com/johnmogi/CICD_pipeline1_terraform_build/tree/main/modules/postgres
+
+in the near future this entire project will be modular for better scaffolding and organisation.
 
 # CI CD execution plan:
 the folowing takes into account the next step that is azure devops CI CD, you can find additional info here
