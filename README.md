@@ -10,10 +10,10 @@ a match made in heaven.
 - You'll obviously need an active Azure cloud subscription.
 - You can use the providers.tf file - populate it with your own access.
 + Retrieve your active <b>subscription id</b>,
-+ Retrieve your active subscription name and other data:
++ Retrieve your active <b>subscription name</b> and other data:
 + https://go.microsoft.com/fwlink/?LinkID=312990
 
-## the next important step is to create and connect a backend file.
+## the next step is to create and connect a backend file.
 You can use the providers file to hook up you backend.<br/>
 the backend file will serve as a back up point for both access and code sharing:
 https://docs.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage?tabs=azure-cli
