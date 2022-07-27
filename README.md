@@ -1,8 +1,21 @@
-# ansible_Terraform_azure
+# Terraform azure
+<img src="https://img.shields.io/badge/Terraform-starter-lightgrey" height="25">
 
-Hello and Wellcome to the wonderfull world of Terraform and Azure cloud-
-a match made in heaven.
+Hello, Dear Devops colleague.
+you can use this project to build the following infrastructure:
+Azure cloud- https://portal.azure.com/
+<img src="clutter/logo-microsoft-cloud-azure-png.webp" height="150">
 
+- virtual network -vnet.
+- a public subnet for the  application (will be populated using the frontend module)
+- a private subnet for the backend postgreSql database (will be populated using the postgres module)
+# additional modules:
+this Project also contains modular 'modules', you can check them out here:
+https://github.com/johnmogi/CICD_pipeline1_terraform_build/tree/main/modules/frontend
+https://github.com/johnmogi/CICD_pipeline1_terraform_build/tree/main/modules/postgres
+
+use this repository at your own advise, for questions feel free to contact me at:
+dev AT johnmogi.com
 
 ![Terraform](https://bootcamp.rhinops.io/images/terraform-logo.png)
 
@@ -91,10 +104,7 @@ terraform plan \
 
 you can also change plan to apply and or add -auto-approve for faster and skipped validation prompt.
 
-# additional modules:
-this Project also contains modular 'modules', you can check them out here:
-https://github.com/johnmogi/CICD_pipeline1_terraform_build/tree/main/modules/frontend
-https://github.com/johnmogi/CICD_pipeline1_terraform_build/tree/main/modules/postgres
+
 
 in the near future this entire project will be modular for better scaffolding and organisation.
 
