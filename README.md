@@ -7,19 +7,23 @@ a match made in heaven.
 ![Terraform](https://bootcamp.rhinops.io/images/terraform-logo.png)
 
 ## How to use this repository:
--you'll obviously need an active Azure cloud subscription.
-- you can use the providers.tf file - populate it with your own access:
-+ retrieve your active subscription id,
-+ retrieve your active subscription name and other data:
+- You'll obviously need an active Azure cloud subscription.
+- You can use the providers.tf file - populate it with your own access:
++ Retrieve your active subscription id,
++ Retrieve your active subscription name and other data:
 + https://go.microsoft.com/fwlink/?LinkID=312990
 
-[!!!] important - do not include your secrets in your providers file if you upload it to github or other public repository, if you do please be advised of the use of enviroments secrets:
-<h4>Terraform and Azure Pipelines - Avoid these Beginner's Mistakes!</h4>
-https://www.youtube.com/watch?v=UaehcmoMAFc
-
-- the next important step is to create and connect a backend file.
+## the next important step is to create and connect a backend file.
+You can use the providers file to hook up you backend.
 the backend file will serve as a back up point for both access and code sharing:
 https://docs.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage?tabs=azure-cli
+
+
+<pre> important - do not include your secrets in your providers file if you upload it to github or other public repository, if you do please be advised of the use of enviroments secrets </pre>
+
+https://www.youtube.com/watch?v=UaehcmoMAFc
+<h6>Terraform and Azure Pipelines - Avoid these Beginner's Mistakes!</h6>
+
 
 
 
@@ -35,7 +39,16 @@ let's say for the sake of this excercise that the 1st ci is an independant that 
 this means that to be truly independant it needs to run on it's seperate agent, to simplify things in a time budget situation- this will have to be manually done.
 
 ## Toubleshooter:
-description - the machines 
+(the following bug fixes allready applied)
+
+description - the machines name is generic and the vm nic can't find it- use hardcoded values instead of generic.
+the generic name originates in the enviroment addition to the resource group
+solution: on vm.tf file
+CHANGE:
+ # rg_name = "${local.name}-${var.group}"
+TO:
+  rg_name  = azurerm_resource_group.weight-app.name
+
 a bug in the state "│ Error: compute.AvailabilitySetsClient#CreateOrUpdate: Failure responding to request: StatusCode=404 -- Original Error: autorest/azure: Service returned an error. Status=404 Code="ResourceGroupNotFound" Message="Resource group 'staging-weight-app' could not be found."
 
 
@@ -44,7 +57,7 @@ https://github.com/hashicorp/terraform/issues/12826
 
 try to delete terraform.tfstate
 
-added infracost
+# added infracost
 infracost --version # Should show 0.10.6
 infracost configure get api_key
 infracost configure set pricing_api_endpoint https://endpoint
