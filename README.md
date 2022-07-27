@@ -92,7 +92,9 @@ terraform plan \
 you can also change plan to apply and or add -auto-approve for faster and skipped validation prompt.
 
 
-# execution plan:
+# CI CD execution plan:
+the folowing takes into account the next step that is azure devops CI CD, you can find additional info here
+
 - spin a vm, connect it as an agent. (sysadmin)
 build a terraform pipelince, that can have ci cd capacibilities, meaning that it can trigger the 2nd and 3rd stages.
 
@@ -259,4 +261,7 @@ No requirements.
 | <a name="output_admin_password"></a> [admin_password](#output_admin_password) | n/a         |
 | <a name="output_app_public_ip"></a> [app_public_ip](#output_app_public_ip)    | n/a         |
 
-# CICD_pipeline1_terraform_build
+
+my Devops journey (hand drawn by me) :
+
+<center><img src="https://raw.githubusercontent.com/johnmogi/password/main/my_devops.jpg" height="400"></center>
