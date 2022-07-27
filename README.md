@@ -4,7 +4,7 @@
 Hello, Dear Devops colleague.
 you can use this project to build the following infrastructure:
 Azure cloud- https://portal.azure.com/
-<img src="clutter/logo-microsoft-cloud-azure-png.webp" height="150">
+<img src="/clutter/logo-microsoft-cloud-azure-png.webp" height="150">
 
 - virtual network -vnet.
 - a public subnet for the  application (will be populated using the frontend module)
