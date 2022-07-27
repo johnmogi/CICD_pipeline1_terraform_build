@@ -137,18 +137,16 @@ try to delete terraform.tfstate
 # added infracost
 this great plugin caclulates the changes in cost so you can decide if a change is too costly and be better prepeared.
 for additional info: https://github.com/infracost
-
+# -needs to run docker container
+https://www.infracost.io/docs/cloud_pricing_api/self_hosted/
+infracost configure set api_key <api>
+<pre>
 infracost --version # Should show 0.10.6
 infracost configure get api_key
 infracost configure set pricing_api_endpoint https://endpoint
--needs to run docker cintainer
-https://www.infracost.io/docs/cloud_pricing_api/self_hosted/
-infracost configure set api_key <api>
+Infracost diff --path prodPlan.json --compare-to stageplan.json
 
 ## how to run the infracost:
-
-nfracost diff --path prodPlan.json --compare-to stageplan.json
-
 tf plan -out=stagePlan.binary -var-file="staging.tfvars"
 infracost diff --path stageplan.json
 infracost diff --path prodPlan.json
@@ -156,23 +154,28 @@ terraform apply -auto-approve -var-file="staging.tfvars"
 
 tfw = terraform workspace
 -tfw show
+</pre>
+
 
 create the staging costs report:
+<pre>
 tfw select staging
 tf plan -out=stagePlan.binary -var-file="staging.tfvars"
 terraform show -json stagePlan.binary > stageplan.json
 infracost breakdown --path . --format json --out-file infracost-report-stageplan.json
 
-build the prod costs report:
+# build the prod costs report:
 tfw select production
 tf plan -out=prodPlan.binary -var-file="production.tfvars"
 terraform show -json prodPlan.binary > prodplan.json
 infracost breakdown --path . --format json --out-file infracost-report-prodplan.json
 
 infracost diff --path plan.json
+</pre>
 
 # test commit
 
+<pre>
 git checkout -b testplan
 git checkout testplan
 infracost diff --path . --format json \
@@ -180,6 +183,7 @@ infracost diff --path . --format json \
 infracost diff --path prod --format json \
  --compare-to nfracost-report-prodplan.json --out-file infracost-report-prodPlan.json
 infracost comment github --path "infracost-report-\*.json" ...
+</pre>
 
 <pre>
 infracost comment github --path plan.json \
