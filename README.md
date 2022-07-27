@@ -1,7 +1,7 @@
 # Terraform azure
 <img src="https://img.shields.io/badge/Terraform-starter-lightgrey" height="25">
 
-Hello, Dear Devops colleague.
+Hello, Dear Devops colleagues, fellow travelrs...
 you can use this project to build the following infrastructure:
 <br/>
 Azure cloud- https://portal.azure.com/
@@ -9,9 +9,14 @@ Azure cloud- https://portal.azure.com/
 <br/>
 
 - virtual network -vnet.
+- a load balancer with public ip - the access point for the application.
+- other parts such as nsg, availability zones, interface cards etc.
 - a public subnet for the  application (will be populated using the frontend module)
+- the above mentioned frontend machine module - configured with the tfvars file (not included)
 - a private subnet for the backend postgreSql database (will be populated using the postgres module)
-# additional modules:
+- the above mentioned postgres module - configured with the tfvars file (not included)
+
+## the modules:
 this Project also contains modular 'modules', you can check them out here:
 https://github.com/johnmogi/CICD_pipeline1_terraform_build/tree/main/modules/frontend
 https://github.com/johnmogi/CICD_pipeline1_terraform_build/tree/main/modules/postgres
