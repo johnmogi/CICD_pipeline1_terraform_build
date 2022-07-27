@@ -1,5 +1,12 @@
 # ansible_Terraform_azure
 
+Hello and Wellcome to the wonderfull world of Terraform and Azure cloud-
+a match made in heaven.
+
+
+![Terraform](https://bootcamp.rhinops.io/images/terraform-logo.png)
+
+
 execution plan:
 spin a vm, connect it as an agent. (sysadmin)
 build a terraform pipelince, that can have ci cd capacibilities, meaning that it can trigger the 2nd and 3rd stages.
