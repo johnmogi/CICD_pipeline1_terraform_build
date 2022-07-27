@@ -21,14 +21,14 @@ this Project also contains modular 'modules', you can check them out here:
 https://github.com/johnmogi/CICD_pipeline1_terraform_build/tree/main/modules/frontend
 https://github.com/johnmogi/CICD_pipeline1_terraform_build/tree/main/modules/postgres
 
-use this repository at your own advise, for questions feel free to contact me at:
+use this repository at your own advise, for questions feel free to contact me at:<br/>
 dev AT johnmogi.com
 
 ![Terraform](https://bootcamp.rhinops.io/images/terraform-logo.png)
 
 ## How to use this repository:
 - You'll obviously need an active Azure cloud subscription.
-- You can use the providers.tf file - populate it with your own access.
+- You can use the providers.tf file - populate it with your own access information.
 + Retrieve your active <b>subscription id</b>,
 + Retrieve your active <b>subscription name</b> and other data:
 + https://go.microsoft.com/fwlink/?LinkID=312990
