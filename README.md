@@ -19,12 +19,77 @@ the backend file will serve as a back up point for both access and code sharing:
 https://docs.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage?tabs=azure-cli
 
 
-<pre> important - do not include your secrets in your providers file if you upload it to github or other public repository, if you do please be advised of the use of enviroments secrets </pre>
+<h2> important - do not include your secrets in your providers file! </h2> 
+if you upload it to github or other public repository, if you do please be advised of the use of enviroments secrets 
 
 https://www.youtube.com/watch?v=UaehcmoMAFc
 <h6>Terraform and Azure Pipelines - Avoid these Beginner's Mistakes!</h6>
 
 
+# how to change variables on enviroment?
+for instance var.machine 2 staging | 3 prod
+or size = "Standard_b2s"
+simply change the variable in the terraform file (see a bit below)
+
+# how to change enviroment?
+on the cli - switch between enviroments, allways make sure your'e on the right envroment...
+<pre>
+terraform workspace select staging
+terraform workspace select production
+</pre>
+
+
+
+
+in order to work with this project we will need you to install the following:
+production.tfvars + staging.tfvars file with the following:
+
+<pre>
+TF_VAR_admin_username = ""
+TF_VAR_admin_password = ""
+TF_VAR_db_username = ""
+TF_VAR_db_password = ""
+TF_VAR_size=""
+TF_VAR_machines=
+</pre>
+
+production staging
+TF_VAR_machines=3 | TF_VAR_machines= 2
+
+once begun do 'az login' and then do the following:
+transfer the following files to the terraform providers.tf
+
+<pre>
+terraform {
+backend "azurerm" {
+resource_group_name = ""
+storage_account_name = ""
+container_name = ""
+key = ""
+access_key = ""
+}
+}
+
+
+provider "azurerm" {
+features {}
+subscription_id = ""
+client_id = ""
+client_secret = ""
+tenant_id = ""
+}
+
+</pre>
+
+then to run the terraform plan command to each it's own enviroment:
+
+terraform plan \  
+-var-file="production.tfvars"
+
+terraform plan \  
+-var-file="staging.tfvars"
+
+you can also change plan to apply and or add -auto-approve for faster and skipped validation prompt.
 
 
 execution plan:
@@ -37,6 +102,9 @@ the actual deployment, with the infracost report before execution.
 
 let's say for the sake of this excercise that the 1st ci is an independant that can chain up the whole process, manually into the repo or all the way.
 this means that to be truly independant it needs to run on it's seperate agent, to simplify things in a time budget situation- this will have to be manually done.
+output file:
+export password and user
+
 
 ## Toubleshooter:
 (the following bug fixes allready applied)
@@ -59,6 +127,9 @@ https://github.com/hashicorp/terraform/issues/12826
 try to delete terraform.tfstate
 
 # added infracost
+this great plugin caclulates the changes in cost so you can decide if a change is too costly and be better prepeared.
+for additional info: https://github.com/infracost
+
 infracost --version # Should show 0.10.6
 infracost configure get api_key
 infracost configure set pricing_api_endpoint https://endpoint
@@ -113,81 +184,7 @@ infracost comment github --path plan.json \
 infracost breakdown --path . --format json --out-file plan.json
 infracost breakdown --path . --format json --out-file plan.json
 
-Sela week 6 Terraform ansible
 
-how to change variables on enviroment?
-for instance var.machine 2 staging | 3 prod
-or size = "Standard_b2s"
-simply change the variable in the terraform file:
-
-terraform workspace select staging
-terraform workspace select production
-
-load balancer + health probes
-
-output:
-export password and user
-
-take care that staging is smaller then production as in vm b1s + 2 vm's on stage
-
-load balance public ip:
-prod public ip: 20.124.177.159
-frontend subnets : 10.0.20.4 | 10.0.20.5 | 10.0.20.6
-
-Staging public ip: 20.124.5.101
-http://20.124.5.101:8080/
-frontend subnets : 10.0.20.4 | 10.0.20.5
-
-this week assignment is to create a terraform project and deploy a simple web app to a public ip address
-during the week we will be using the following resources:
-
-in order to work with this project we will need you to install the following:
-production.tfvars + staging.tfvars file with the following:
-
-<pre>
-TF_VAR_admin_username = ""
-TF_VAR_admin_password = ""
-TF_VAR_db_username = ""
-TF_VAR_db_password = ""
-TF_VAR_size=""
-TF_VAR_machines=
-</pre>
-
-production staging
-TF_VAR_machines=3 | TF_VAR_machines= 2
-
-once begun do az login and then do the following:
-transfer the following files to the terraform providers.tf
-
-<pre>
-terraform {
-backend "azurerm" {
-resource_group_name = ""
-storage_account_name = ""
-container_name = ""
-key = ""
-access_key = ""
-}
-}
-
-
-provider "azurerm" {
-features {}
-subscription_id = ""
-client_id = ""
-client_secret = ""
-tenant_id = ""
-}
-
-</pre>
-
-then to run the terraform plan command to each it's own enviroment:
-
-tfgo \  
--var-file="production.tfvars"
-
-tfgo \  
--var-file="staging.tfvars"
 
 ## Requirements
 
