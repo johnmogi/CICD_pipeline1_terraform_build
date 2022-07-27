@@ -8,13 +8,13 @@ a match made in heaven.
 
 ## How to use this repository:
 - You'll obviously need an active Azure cloud subscription.
-- You can use the providers.tf file - populate it with your own access:
-+ Retrieve your active subscription id,
+- You can use the providers.tf file - populate it with your own access.
++ Retrieve your active <b>subscription id</b>,
 + Retrieve your active subscription name and other data:
 + https://go.microsoft.com/fwlink/?LinkID=312990
 
 ## the next important step is to create and connect a backend file.
-You can use the providers file to hook up you backend.
+You can use the providers file to hook up you backend.<br/>
 the backend file will serve as a back up point for both access and code sharing:
 https://docs.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage?tabs=azure-cli
 
@@ -27,9 +27,9 @@ https://www.youtube.com/watch?v=UaehcmoMAFc
 
 
 # how to change variables on enviroment?
-for instance var.machine 2 staging | 3 prod
-or size = "Standard_b2s"
-simply change the variable in the terraform file (see a bit below)
+for instance var.machine 2 staging | 3 prod <br/>
+or size = "Standard_b2s" <br/>
+simply change the variable in the terraform file <br/>(see a bit below)
 
 # how to change enviroment?
 on the cli - switch between enviroments, allways make sure your'e on the right envroment...
@@ -41,7 +41,7 @@ terraform workspace select production
 
 
 
-in order to work with this project we will need you to install the following:
+in order to work with this project we will need you to install the following:<br/>
 production.tfvars + staging.tfvars file with the following:
 
 <pre>
@@ -56,7 +56,7 @@ TF_VAR_machines=
 production staging
 TF_VAR_machines=3 | TF_VAR_machines= 2
 
-once begun do 'az login' and then do the following:
+once begun do 'az login' and then do the following:<br/>
 transfer the following files to the terraform providers.tf
 
 <pre>
@@ -92,15 +92,15 @@ terraform plan \
 you can also change plan to apply and or add -auto-approve for faster and skipped validation prompt.
 
 
-execution plan:
-spin a vm, connect it as an agent. (sysadmin)
+# execution plan:
+- spin a vm, connect it as an agent. (sysadmin)
 build a terraform pipelince, that can have ci cd capacibilities, meaning that it can trigger the 2nd and 3rd stages.
 
-1st stage: terraform repo. in here we have 2 distinct stages:
+- 1st stage: terraform repo. in here we have 2 distinct stages:
 building a backend (what does it compose of? which files are relevant? what are the steps to build it?)
 the actual deployment, with the infracost report before execution.
 
-let's say for the sake of this excercise that the 1st ci is an independant that can chain up the whole process, manually into the repo or all the way.
+- let's say for the sake of this excercise that the 1st ci is an independant that can chain up the whole process, manually into the repo or all the way.<br/>
 this means that to be truly independant it needs to run on it's seperate agent, to simplify things in a time budget situation- this will have to be manually done.
 output file:
 export password and user
@@ -109,7 +109,7 @@ export password and user
 ## Toubleshooter:
 (the following bug fixes allready applied)
 
-description - the machines name is generic and the vm nic can't find it- use hardcoded values instead of generic.
+description - the machines name is generic and the vm nic can't find it- use hardcoded values instead of generic.<br/>
 the generic name originates in the enviroment addition to the resource group
 solution: on vm.tf file
 <pre>
