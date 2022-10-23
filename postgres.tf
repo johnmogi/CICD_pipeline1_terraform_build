@@ -1,14 +1,14 @@
 
 #Creates the postgreSQL server (managed database)
-module "postgres" {
-  source          = "./modules/postgres"
-  rg_name  = azurerm_resource_group.weight-app.name
-  location = var.location
-  vnet            = azurerm_virtual_network.weight_app_network
-  bacjendSubnet       = azurerm_subnet.backend_subnet.id
-  pgUsername         = var.TF_VAR_db_username
-  pgPassword     = var.TF_VAR_db_password
-}
+# module "postgres" {
+#   source          = "./modules/postgres"
+#   rg_name  = azurerm_resource_group.weight-app.name
+#   location = var.location
+#   vnet            = azurerm_virtual_network.weight_app_network
+#   bacjendSubnet       = azurerm_subnet.backend_subnet.id
+#   pgUsername         = var.TF_VAR_db_username
+#   pgPassword     = var.TF_VAR_db_password
+# }
 
 # # private_dns_zone for the private_dns_zone_name
 # resource "azurerm_private_dns_zone" "privateDnsZone" {

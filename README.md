@@ -1,4 +1,15 @@
 # Terraform azure
+
+[reconnect info]
+
+vm machine sizes:
+https://learn.microsoft.com/en-us/azure/virtual-machines/sizes-b-series-burstable
+
+alias shortcuts for tf:
+https://github.com/johnmogi/terraform/blob/main/start_here.md
+
+tf workspace new staging
+
 <img src="https://img.shields.io/badge/Terraform-starter-lightgrey" height="25">
 
 Hello, Dear Devops colleagues, fellow travelrs...
@@ -11,12 +22,13 @@ Azure cloud- https://portal.azure.com/
 - virtual network -vnet.
 - a load balancer with public ip - the access point for the application.
 - other parts such as nsg, availability zones, interface cards etc.
-- a public subnet for the  application (will be populated using the frontend module)
+- a public subnet for the application (will be populated using the frontend module)
 - the above mentioned frontend machine module - configured with the tfvars file (not included)
 - a private subnet for the backend postgreSql database (will be populated using the postgres module)
 - the above mentioned postgres module - configured with the tfvars file (not included)
 
 ## the modules:
+
 this Project also contains modular 'modules', you can check them out here:
 https://github.com/johnmogi/CICD_pipeline1_terraform_build/tree/main/modules/frontend
 https://github.com/johnmogi/CICD_pipeline1_terraform_build/tree/main/modules/postgres
@@ -27,39 +39,41 @@ dev AT johnmogi.com
 ![Terraform](https://bootcamp.rhinops.io/images/terraform-logo.png)
 
 ## How to use this repository:
+
 - You'll obviously need an active Azure cloud subscription.
 - You can use the providers.tf file - populate it with your own access information.
-+ Retrieve your active <b>subscription id</b>,
-+ Retrieve your active <b>subscription name</b> and other data:
-+ https://go.microsoft.com/fwlink/?LinkID=312990
+
+* Retrieve your active <b>subscription id</b>,
+* Retrieve your active <b>subscription name</b> and other data:
+* https://go.microsoft.com/fwlink/?LinkID=312990
 
 ## the next step is to create and connect a backend file.
+
 You can use the providers file to hook up you backend.<br/>
 the backend file will serve as a back up point for both access and code sharing:
 https://docs.microsoft.com/en-us/azure/developer/terraform/store-state-in-azure-storage?tabs=azure-cli
 
-
 <h2> important - do not include your secrets in your providers file! </h2> 
-if you upload it to github or other public repository, if you do please be advised of the use of enviroments secrets 
+if you upload it to github or other public repository, if you do please be advised of the use of enviroments secrets
 
 https://www.youtube.com/watch?v=UaehcmoMAFc
+
 <h6>Terraform and Azure Pipelines - Avoid these Beginner's Mistakes!</h6>
 
-
 # how to change variables on enviroment?
+
 for instance var.machine 2 staging | 3 prod <br/>
 or size = "Standard_b2s" <br/>
 simply change the variable in the terraform file <br/>(see a bit below)
 
 # how to change enviroment?
+
 on the cli - switch between enviroments, allways make sure your'e on the right envroment...
+
 <pre>
 terraform workspace select staging
 terraform workspace select production
 </pre>
-
-
-
 
 in order to work with this project we will need you to install the following:<br/>
 production.tfvars + staging.tfvars file with the following:
@@ -111,34 +125,36 @@ terraform plan \
 
 you can also change plan to apply and or add -auto-approve for faster and skipped validation prompt.
 
-
-
 in the near future this entire project will be modular for better scaffolding and organisation.
 
 # CI CD execution plan:
+
 the folowing takes into account the next step that is azure devops CI CD, you can find additional info here
 
 - spin a vm, connect it as an agent. (sysadmin)
-build a terraform pipelince, that can have ci cd capacibilities, meaning that it can trigger the 2nd and 3rd stages.
+  build a terraform pipelince, that can have ci cd capacibilities, meaning that it can trigger the 2nd and 3rd stages.
 
 - 1st stage: terraform repo. in here we have 2 distinct stages:
-building a backend (what does it compose of? which files are relevant? what are the steps to build it?)
-the actual deployment, with the infracost report before execution.
+  building a backend (what does it compose of? which files are relevant? what are the steps to build it?)
+  the actual deployment, with the infracost report before execution.
 
 - let's say for the sake of this excercise that the 1st ci is an independant that can chain up the whole process, manually into the repo or all the way.<br/>
-this means that to be truly independant it needs to run on it's seperate agent, to simplify things in a time budget situation- this will have to be manually done.
-output file:
-export password and user
-
+  this means that to be truly independant it needs to run on it's seperate agent, to simplify things in a time budget situation- this will have to be manually done.
+  output file:
+  export password and user
 
 common bug and version fixes at the bug-tracker.md
 
 # added infracost
+
 this great plugin caclulates the changes in cost so you can decide if a change is too costly and be better prepeared.
 for additional info: https://github.com/infracost
+
 # -needs to run docker container
+
 https://www.infracost.io/docs/cloud_pricing_api/self_hosted/
 infracost configure set api_key <api>
+
 <pre>
 infracost --version # Should show 0.10.6
 infracost configure get api_key
@@ -155,8 +171,8 @@ tfw = terraform workspace
 -tfw show
 </pre>
 
-
 create the staging costs report:
+
 <pre>
 tfw select staging
 tf plan -out=stagePlan.binary -var-file="staging.tfvars"
@@ -194,8 +210,6 @@ infracost comment github --path plan.json \
 
 infracost breakdown --path . --format json --out-file plan.json
 infracost breakdown --path . --format json --out-file plan.json
-
-
 
 ## Requirements
 
@@ -269,7 +283,6 @@ No requirements.
 | ----------------------------------------------------------------------------- | ----------- |
 | <a name="output_admin_password"></a> [admin_password](#output_admin_password) | n/a         |
 | <a name="output_app_public_ip"></a> [app_public_ip](#output_app_public_ip)    | n/a         |
-
 
 my Devops journey (hand drawn by me) :
 
